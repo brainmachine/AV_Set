@@ -99,12 +99,12 @@ void testApp::draw(){
         
         //shake the signal
         if (masterCounter%2 == 0) {
-            yStart += mainMix*30;
+            yStart += mainMix*10;
             xDest += xDest*mainMix;
             yDest += yDest*mainMix;
         }
         else {
-           yStart -= mainMix*30;
+           yStart -= mainMix*10;
             xDest -= xDest*mainMix;
             yDest -= yDest*mainMix;
             
