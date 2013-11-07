@@ -96,9 +96,18 @@ void testApp::draw(){
         int r = daMouseX*sin(masterCounter)/4;
         int g = i/4;
         int b = daMouseX*daMouseY*i/4;
+        
+        // line start and destination
+        int xStart = i;
+        int yStart = ofGetHeight()/2;
+        int xDest = i*sin(i)*mouseY;
+        int yDest = i*cos(i)*masterCounter;
+        
+        //shake the signal
+        r += r*mainMix;
+        
         ofSetColor(r, g, b); //Replace this with pixel colors from feed
-        ofLine(i, ofGetHeight()/2, i*sin(i), i*cos(i)*mainMix*/*mouseY*30*/masterCounter);
-    }
+         ofLine(xStart, yStart, xDest, yDest);    }
 
 }
 
