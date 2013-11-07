@@ -103,18 +103,22 @@ void testApp::draw(){
         int xStart = i;
         int yStart = ofGetHeight()/2;
         int xDest = i*sin(i)*mouseY;
-        int yDest = i*cos(i)*masterCounter;
+        int yDest = i*cos(i)*masterCounter*mainMix;
         
         //shake the signal
         if (masterCounter%2 == 0) {
             yStart += mainMix*30;
+            xDest += xDest*mainMix;
+            yDest += yDest*mainMix;
         }
         else {
            yStart -= mainMix*30;
-            ofLogNotice("!!!!!");
+            xDest -= xDest*mainMix;
+            yDest -= yDest*mainMix;
+            
         }
-        xDest += xDest*mainMix;
-        yDest += yDest*mainMix;
+        
+        
         
         ofSetColor(r, g, b); //Replace this with pixel colors from feed
          ofLine(xStart, yStart, xDest, yDest);    }
