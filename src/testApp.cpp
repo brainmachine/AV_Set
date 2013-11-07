@@ -12,19 +12,13 @@ void testApp::setup(){
     
     // OSC STUFF
     receiver.setup(PORT);
-	current_msg_string = 0;
     mainMix = 0;
+    chan01 = 0;
 }
 
 //--------------------------------------------------------------
 void testApp::update(){
 
-    // hide old messages
-	for(int i = 0; i < NUM_MSG_STRINGS; i++){
-		if(timers[i] < ofGetElapsedTimef()){
-			msg_strings[i] = "";
-		}
-	}
     
 	// check for waiting messages
 	while(receiver.hasWaitingMessages()){
@@ -38,6 +32,10 @@ void testApp::update(){
 			mainMix = m.getArgAsFloat(0);
             ofLogNotice("mainMix: "+ofToString(m.getArgAsFloat(0)));
 		}
+        if (m.getAddress() == "main/chan01") {
+            chan01 = m.getArgAsFloat(0);
+            ofLogNotice("this is what it is: "+ofToString(chan01));
+        }
 		// check for mouse button message
 		else{
 			// unrecognized message: display on the bottom of the screen
@@ -62,12 +60,7 @@ void testApp::update(){
 					msg_string += "unknown";
 				}
 			}
-			// add to the list of strings to display
-			msg_strings[current_msg_string] = msg_string;
-			timers[current_msg_string] = ofGetElapsedTimef() + 5.0f;
-			current_msg_string = (current_msg_string + 1) % NUM_MSG_STRINGS;
-			// clear the next line
-			msg_strings[current_msg_string] = "";
+		
 		}
         
 	}
