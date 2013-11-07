@@ -36,7 +36,7 @@ void testApp::update(){
 		if(m.getAddress() == "/main/mix"){
 			// both the arguments are int32's
 			mainMix = m.getArgAsFloat(0);
-            ofLogNotice("you are the master of the universe"+ofToString(m.getArgAsFloat(0)));
+            ofLogNotice("mainMix: "+ofToString(m.getArgAsFloat(0)));
 		}
 		// check for mouse button message
 		else{
@@ -97,13 +97,17 @@ void testApp::draw(){
         int g = i/4;
         int b = daMouseX*daMouseY*i/4;
         ofSetColor(r, g, b); //Replace this with pixel colors from feed
-        ofLine(i, ofGetHeight()/2, i*sin(i)*mouseY, i*cos(i)*/*mouseY*30*/masterCounter);
+        ofLine(i, ofGetHeight()/2, i*sin(i), i*cos(i)*mainMix*/*mouseY*30*/masterCounter);
     }
 
 }
 
 //--------------------------------------------------------------
 void testApp::keyPressed(int key){
+    if (key == 'f' || 'F') {
+        isFullScreen = !isFullScreen;
+        ofSetFullscreen(isFullScreen);
+    }
 
 }
 
