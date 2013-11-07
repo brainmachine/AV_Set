@@ -80,7 +80,7 @@ void testApp::update(){
 void testApp::draw(){
     //normalize mouse (within the window space...
     float daMouseX = float(mouseX)/float(ofGetWidth());
-    float daMouseY = float(mouseY)/ofGetHeight();
+    float daMouseY = float(mouseY)/float(ofGetHeight());
    // ofLogNotice(ofToString(daMouseX));
     
     //Abstract line stuff
@@ -94,7 +94,7 @@ void testApp::draw(){
         // line start and destination
         int xStart = i;
         int yStart = ofGetHeight()/2;
-        int xDest = i*sin(i)*mouseY;
+        int xDest = i*sin(i)*400; //400 is arbitrary.
         int yDest = i*cos(i)*masterCounter*mainMix;
         
         //shake the signal
