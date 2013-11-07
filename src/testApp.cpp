@@ -32,33 +32,35 @@ void testApp::update(){
 			mainMix = m.getArgAsFloat(0);
             ofLogNotice("mainMix: "+ofToString(m.getArgAsFloat(0)));
 		}
-        if (m.getAddress() == "/main/chan/one") {
+        else if (m.getAddress() == "/main/chan/one") {
             chan01 = m.getArgAsFloat(0);
-            ofLogNotice("chan/one: "+ofToString(chan01));
+            if (chan01 < 1) { //stop the weird numbers
+                ofLogNotice("chan/one: "+ofToString(chan01));
+            }
         }
-        if (m.getAddress() == "/main/chan/two") {
-            chan01 = m.getArgAsFloat(0);
-            ofLogNotice("two "+ofToString(chan01));
+        else if (m.getAddress() == "/main/chan/two") {
+            chan02 = m.getArgAsFloat(0);
+            ofLogNotice("two "+ofToString(chan02));
         }
-        if (m.getAddress() == "/main/chan/three") {
-            chan01 = m.getArgAsFloat(0);
-            ofLogNotice("tthree "+ofToString(chan01));
+        else if (m.getAddress() == "/main/chan/three") {
+            chan03 = m.getArgAsFloat(0);
+            ofLogNotice("tthree "+ofToString(chan03));
         }
-        if (m.getAddress() == "/main/chan/four") {
-            chan01 = m.getArgAsFloat(0);
-            ofLogNotice("four: "+ofToString(chan01));
+        else if (m.getAddress() == "/main/chan/four") {
+            chan04 = m.getArgAsFloat(0);
+            ofLogNotice("four: "+ofToString(chan04));
         }
-        if (m.getAddress() == "/main/chan/five") {
-            chan01 = m.getArgAsFloat(0);
-            ofLogNotice("five: "+ofToString(chan01));
+        else if (m.getAddress() == "/main/chan/five") {
+            chan05 = m.getArgAsFloat(0);
+            ofLogNotice("five: "+ofToString(chan05));
         }
-        if (m.getAddress() == "/main/chan/six") {
-            chan01 = m.getArgAsFloat(0);
-            ofLogNotice("six"+ofToString(chan01));
+        else if (m.getAddress() == "/main/chan/six") {
+            chan06 = m.getArgAsFloat(0);
+            ofLogNotice("six"+ofToString(chan06));
         }
-        if (m.getAddress() == "/main/chan/seven") {
-            chan01 = m.getArgAsFloat(0);
-            ofLogNotice("tseven "+ofToString(chan01));
+        else if (m.getAddress() == "/main/chan/seven") {
+            chan07 = m.getArgAsFloat(0);
+            ofLogNotice("tseven "+ofToString(chan07));
         }
 	}
     
