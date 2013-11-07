@@ -26,7 +26,8 @@ class testApp : public ofBaseApp{
     //OSC stuff
     ofxOscReceiver receiver;
     float mainMix;
-    float chan01;
+    float chan01, chan02, chan03, chan04, chan05, chan06, chan07;
+    
 
     
     // FUN STUFF

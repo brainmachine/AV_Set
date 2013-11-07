@@ -13,7 +13,7 @@ void testApp::setup(){
     // OSC STUFF
     receiver.setup(PORT);
     mainMix = 0;
-    chan01 = 0;
+    chan01, chan02, chan03, chan04, chan05, chan06, chan07 = 0;
 }
 
 //--------------------------------------------------------------
@@ -34,7 +34,31 @@ void testApp::update(){
 		}
         if (m.getAddress() == "/main/chan/one") {
             chan01 = m.getArgAsFloat(0);
-            ofLogNotice("this is what it is: "+ofToString(chan01));
+            ofLogNotice("chan/one: "+ofToString(chan01));
+        }
+        if (m.getAddress() == "/main/chan/two") {
+            chan01 = m.getArgAsFloat(0);
+            ofLogNotice("two "+ofToString(chan01));
+        }
+        if (m.getAddress() == "/main/chan/three") {
+            chan01 = m.getArgAsFloat(0);
+            ofLogNotice("tthree "+ofToString(chan01));
+        }
+        if (m.getAddress() == "/main/chan/four") {
+            chan01 = m.getArgAsFloat(0);
+            ofLogNotice("four: "+ofToString(chan01));
+        }
+        if (m.getAddress() == "/main/chan/five") {
+            chan01 = m.getArgAsFloat(0);
+            ofLogNotice("five: "+ofToString(chan01));
+        }
+        if (m.getAddress() == "/main/chan/six") {
+            chan01 = m.getArgAsFloat(0);
+            ofLogNotice("six"+ofToString(chan01));
+        }
+        if (m.getAddress() == "/main/chan/seven") {
+            chan01 = m.getArgAsFloat(0);
+            ofLogNotice("tseven "+ofToString(chan01));
         }
 	}
     
