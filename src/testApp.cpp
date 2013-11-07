@@ -93,6 +93,8 @@ void testApp::draw(){
     
     //Abstract line stuff
     for (int i = 0; i < ofGetWidth(); i++) {
+        
+        // set the color for each line
         int r = daMouseX*sin(masterCounter)/4;
         int g = i/4;
         int b = daMouseX*daMouseY*i/4;
@@ -104,7 +106,15 @@ void testApp::draw(){
         int yDest = i*cos(i)*masterCounter;
         
         //shake the signal
-        r += r*mainMix;
+        if (masterCounter%2 == 0) {
+            yStart += mainMix*30;
+        }
+        else {
+           yStart -= mainMix*30;
+            ofLogNotice("!!!!!");
+        }
+        xDest += xDest*mainMix;
+        yDest += yDest*mainMix;
         
         ofSetColor(r, g, b); //Replace this with pixel colors from feed
          ofLine(xStart, yStart, xDest, yDest);    }
