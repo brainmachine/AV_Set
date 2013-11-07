@@ -20,49 +20,7 @@ void testApp::setup(){
 void testApp::update(){
 
     
-	// check for waiting messages
-	while(receiver.hasWaitingMessages()){
-		// get the next message
-		ofxOscMessage m;
-		receiver.getNextMessage(&m);
-        
-		// check for mouse moved message
-		if(m.getAddress() == "/main/mix"){
-			// both the arguments are int32's
-			mainMix = m.getArgAsFloat(0);
-            ofLogNotice("mainMix: "+ofToString(m.getArgAsFloat(0)));
-		}
-        else if (m.getAddress() == "/main/chan/one") {
-            chan01 = m.getArgAsFloat(0);
-            if (chan01 < 1) { //stop the weird numbers
-                ofLogNotice("chan/one: "+ofToString(chan01));
-            }
-        }
-        else if (m.getAddress() == "/main/chan/two") {
-            chan02 = m.getArgAsFloat(0);
-            ofLogNotice("two "+ofToString(chan02));
-        }
-        else if (m.getAddress() == "/main/chan/three") {
-            chan03 = m.getArgAsFloat(0);
-            ofLogNotice("tthree "+ofToString(chan03));
-        }
-        else if (m.getAddress() == "/main/chan/four") {
-            chan04 = m.getArgAsFloat(0);
-            ofLogNotice("four: "+ofToString(chan04));
-        }
-        else if (m.getAddress() == "/main/chan/five") {
-            chan05 = m.getArgAsFloat(0);
-            ofLogNotice("five: "+ofToString(chan05));
-        }
-        else if (m.getAddress() == "/main/chan/six") {
-            chan06 = m.getArgAsFloat(0);
-            ofLogNotice("six"+ofToString(chan06));
-        }
-        else if (m.getAddress() == "/main/chan/seven") {
-            chan07 = m.getArgAsFloat(0);
-            ofLogNotice("tseven "+ofToString(chan07));
-        }
-	}
+	parseOSCMessages();
     
     // FUN STUFF
     masterCounter+=direction;
@@ -109,12 +67,57 @@ void testApp::draw(){
             yDest -= yDest*mainMix;
             
         }
-        
-        
-        
+
         ofSetColor(r, g, b); //Replace this with pixel colors from feed
          ofLine(xStart, yStart, xDest, yDest);    }
 
+}
+
+//--------------------------------------------------------------
+void testApp::parseOSCMessages() {
+    // check for waiting messages
+	while(receiver.hasWaitingMessages()){
+		// get the next message
+		ofxOscMessage m;
+		receiver.getNextMessage(&m);
+        
+		// check for mouse moved message
+		if(m.getAddress() == "/main/mix"){
+			// both the arguments are int32's
+			mainMix = m.getArgAsFloat(0);
+            ofLogNotice("mainMix: "+ofToString(m.getArgAsFloat(0)));
+		}
+        else if (m.getAddress() == "/main/chan/one") {
+            chan01 = m.getArgAsFloat(0);
+            if (chan01 < 1) { //stop the weird numbers
+                ofLogNotice("chan/one: "+ofToString(chan01));
+            }
+        }
+        else if (m.getAddress() == "/main/chan/two") {
+            chan02 = m.getArgAsFloat(0);
+            ofLogNotice("two "+ofToString(chan02));
+        }
+        else if (m.getAddress() == "/main/chan/three") {
+            chan03 = m.getArgAsFloat(0);
+            ofLogNotice("tthree "+ofToString(chan03));
+        }
+        else if (m.getAddress() == "/main/chan/four") {
+            chan04 = m.getArgAsFloat(0);
+            ofLogNotice("four: "+ofToString(chan04));
+        }
+        else if (m.getAddress() == "/main/chan/five") {
+            chan05 = m.getArgAsFloat(0);
+            ofLogNotice("five: "+ofToString(chan05));
+        }
+        else if (m.getAddress() == "/main/chan/six") {
+            chan06 = m.getArgAsFloat(0);
+            ofLogNotice("six"+ofToString(chan06));
+        }
+        else if (m.getAddress() == "/main/chan/seven") {
+            chan07 = m.getArgAsFloat(0);
+            ofLogNotice("tseven "+ofToString(chan07));
+        }
+	}
 }
 
 //--------------------------------------------------------------
