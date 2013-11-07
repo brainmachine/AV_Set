@@ -47,8 +47,8 @@
 					"numinlets" : 2,
 					"numoutlets" : 1,
 					"outlettype" : [ "" ],
-					"patching_rect" : [ 624.5, 280.0, 99.0, 16.0 ],
-					"text" : "/main/chan07 $1"
+					"patching_rect" : [ 624.5, 280.0, 121.0, 16.0 ],
+					"text" : "/main/chan/seven $1"
 				}
 
 			}
@@ -61,8 +61,8 @@
 					"numinlets" : 2,
 					"numoutlets" : 1,
 					"outlettype" : [ "" ],
-					"patching_rect" : [ 579.0, 298.0, 99.0, 16.0 ],
-					"text" : "/main/chan06 $1"
+					"patching_rect" : [ 579.0, 298.0, 104.0, 16.0 ],
+					"text" : "/main/chan/six $1"
 				}
 
 			}
@@ -75,8 +75,8 @@
 					"numinlets" : 2,
 					"numoutlets" : 1,
 					"outlettype" : [ "" ],
-					"patching_rect" : [ 533.5, 314.0, 99.0, 16.0 ],
-					"text" : "/main/chan05 $1"
+					"patching_rect" : [ 533.5, 314.0, 108.0, 16.0 ],
+					"text" : "/main/chan/five $1"
 				}
 
 			}
@@ -89,8 +89,8 @@
 					"numinlets" : 2,
 					"numoutlets" : 1,
 					"outlettype" : [ "" ],
-					"patching_rect" : [ 488.0, 330.0, 99.0, 16.0 ],
-					"text" : "/main/chan04 $1"
+					"patching_rect" : [ 488.0, 330.0, 110.0, 16.0 ],
+					"text" : "/main/chan/four $1"
 				}
 
 			}
@@ -103,8 +103,8 @@
 					"numinlets" : 2,
 					"numoutlets" : 1,
 					"outlettype" : [ "" ],
-					"patching_rect" : [ 442.5, 355.0, 99.0, 16.0 ],
-					"text" : "/main/chan03 $1"
+					"patching_rect" : [ 442.5, 355.0, 117.0, 16.0 ],
+					"text" : "/main/chan/three $1"
 				}
 
 			}
@@ -117,8 +117,8 @@
 					"numinlets" : 2,
 					"numoutlets" : 1,
 					"outlettype" : [ "" ],
-					"patching_rect" : [ 397.0, 382.0, 99.0, 16.0 ],
-					"text" : "/main/chan02 $1"
+					"patching_rect" : [ 397.0, 382.0, 108.0, 16.0 ],
+					"text" : "/main/chan/two $1"
 				}
 
 			}
@@ -3348,6 +3348,51 @@
 					"disabled" : 0,
 					"hidden" : 0,
 					"source" : [ "obj-57", 0 ]
+				}
+
+			}
+, 			{
+				"patchline" : 				{
+					"destination" : [ "obj-33", 0 ],
+					"disabled" : 0,
+					"hidden" : 0,
+					"source" : [ "obj-58", 0 ]
+				}
+
+			}
+, 			{
+				"patchline" : 				{
+					"destination" : [ "obj-33", 0 ],
+					"disabled" : 0,
+					"hidden" : 0,
+					"source" : [ "obj-59", 0 ]
+				}
+
+			}
+, 			{
+				"patchline" : 				{
+					"destination" : [ "obj-33", 0 ],
+					"disabled" : 0,
+					"hidden" : 0,
+					"source" : [ "obj-60", 0 ]
+				}
+
+			}
+, 			{
+				"patchline" : 				{
+					"destination" : [ "obj-33", 0 ],
+					"disabled" : 0,
+					"hidden" : 0,
+					"source" : [ "obj-61", 0 ]
+				}
+
+			}
+, 			{
+				"patchline" : 				{
+					"destination" : [ "obj-33", 0 ],
+					"disabled" : 0,
+					"hidden" : 0,
+					"source" : [ "obj-62", 0 ]
 				}
 
 			}
