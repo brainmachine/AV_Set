@@ -85,7 +85,7 @@ void testApp::parseOSCMessages() {
 		// check for mouse moved message
         if(m.getAddress() == "/main/meter") {
             string getIt = m.getArgAsString(0);
-            meter01 = ofToFloat(getIt);
+            mainMix = ofToFloat(getIt);
             meter02 = m.getArgAsFloat(1);
             meter03 = m.getArgAsFloat(2);
             meter04 = m.getArgAsFloat(3);
