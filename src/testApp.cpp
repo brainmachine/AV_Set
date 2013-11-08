@@ -14,6 +14,7 @@ void testApp::setup(){
     receiver.setup(PORT);
     mainMix = 0;
     chan01, chan02, chan03, chan04, chan05, chan06, chan07 = 0;
+    meter01, meter02, meter03, meter04, meter05, meter06, meter07 = 0;
 }
 
 //--------------------------------------------------------------
@@ -82,41 +83,52 @@ void testApp::parseOSCMessages() {
 		receiver.getNextMessage(&m);
         
 		// check for mouse moved message
-		if(m.getAddress() == "/main/mix"){
-			// both the arguments are int32's
-			mainMix = m.getArgAsFloat(0);
-            ofLogNotice("mainMix: "+ofToString(m.getArgAsFloat(0)));
-		}
-        else if (m.getAddress() == "/main/chan/one") {
-            chan01 = m.getArgAsFloat(0);
-            if (chan01 < 1) { //stop the weird numbers
-                ofLogNotice("chan/one: "+ofToString(chan01));
-            }
+        if(m.getAddress() == "/main/meter") {
+            string getIt = m.getArgAsString(0);
+            meter01 = ofToFloat(getIt);
+            meter02 = m.getArgAsFloat(1);
+            meter03 = m.getArgAsFloat(2);
+            meter04 = m.getArgAsFloat(3);
+            meter05 = m.getArgAsFloat(4);
+            meter06 = m.getArgAsFloat(5);
+            meter07 = m.getArgAsFloat(6);
+            ofLogNotice("meter01: "+ ofToString(getIt));
         }
-        else if (m.getAddress() == "/main/chan/two") {
-            chan02 = m.getArgAsFloat(0);
-            ofLogNotice("two "+ofToString(chan02));
-        }
-        else if (m.getAddress() == "/main/chan/three") {
-            chan03 = m.getArgAsFloat(0);
-            ofLogNotice("tthree "+ofToString(chan03));
-        }
-        else if (m.getAddress() == "/main/chan/four") {
-            chan04 = m.getArgAsFloat(0);
-            ofLogNotice("four: "+ofToString(chan04));
-        }
-        else if (m.getAddress() == "/main/chan/five") {
-            chan05 = m.getArgAsFloat(0);
-            ofLogNotice("five: "+ofToString(chan05));
-        }
-        else if (m.getAddress() == "/main/chan/six") {
-            chan06 = m.getArgAsFloat(0);
-            ofLogNotice("six"+ofToString(chan06));
-        }
-        else if (m.getAddress() == "/main/chan/seven") {
-            chan07 = m.getArgAsFloat(0);
-            ofLogNotice("tseven "+ofToString(chan07));
-        }
+//		if(m.getAddress() == "/main/mix"){
+//			// both the arguments are int32's
+//			mainMix = m.getArgAsFloat(0);
+//            ofLogNotice("mainMix: "+ofToString(m.getArgAsFloat(0)));
+//		}
+//        else if (m.getAddress() == "/main/chan/one") {
+//            chan01 = m.getArgAsFloat(0);
+//            if (chan01 < 1) { //stop the weird numbers
+//                ofLogNotice("chan/one: "+ofToString(chan01));
+//            }
+//        }
+//        else if (m.getAddress() == "/main/chan/two") {
+//            chan02 = m.getArgAsFloat(0);
+//            ofLogNotice("chan/two: "+ofToString(chan02));
+//        }
+//        else if (m.getAddress() == "/main/chan/three") {
+//            chan03 = m.getArgAsFloat(0);
+//            ofLogNotice("chan/three: "+ofToString(chan03));
+//        }
+//        else if (m.getAddress() == "/main/chan/four") {
+//            chan04 = m.getArgAsFloat(0);
+//            ofLogNotice("chan/four: "+ofToString(chan04));
+//        }
+//        else if (m.getAddress() == "/main/chan/five") {
+//            chan05 = m.getArgAsFloat(0);
+//            ofLogNotice("chan/five: : "+ofToString(chan05));
+//        }
+//        else if (m.getAddress() == "/main/chan/six") {
+//            chan06 = m.getArgAsFloat(0);
+//            ofLogNotice("chan/six: "+ofToString(chan06));
+//        }
+//        else if (m.getAddress() == "/main/chan/seven") {
+//            chan07 = m.getArgAsFloat(0);
+//            ofLogNotice("chan/seven "+ofToString(chan07));
+//        }
 	}
 }
 
