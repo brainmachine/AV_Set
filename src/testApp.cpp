@@ -23,6 +23,7 @@ void testApp::setup(){
     numXRects = ofGetHeight()/rectSize-rectSpacing;
     numRects = numYRects*numXRects;
     rectCount = 0;
+    ofLogNotice("\n numYRects: "+ofToString(numYRects)+"\n numXRects: "+ofToString(numXRects)+"\n numRects: "+ofToString(numRects));
 }
 
 //--------------------------------------------------------------
