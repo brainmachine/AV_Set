@@ -85,20 +85,21 @@ void testApp::parseOSCMessages() {
 		// check for mouse moved message
         if(m.getAddress() == "/main/meter") {
             string getIt = m.getArgAsString(0);
-            mainMix = ofToFloat(getIt);
-            getIt = m.getArgAsString(1);
-            meter02 = ofToFloat(getIt);
-            getIt = m.getArgAsString(2);
-            meter03 = ofToFloat(getIt);
-            getIt = m.getArgAsString(3);
-            meter04 = ofToFloat(getIt);
-            getIt = m.getArgAsString(4);
-            meter05 = ofToFloat(getIt);
-            getIt = m.getArgAsString(5);
-            meter06 = ofToFloat(getIt);
-            getIt = m.getArgAsString(6);
-            meter07 = ofToFloat(getIt);
-            ofLogNotice("meter01: "+ ofToString(getIt));
+            string bs = getIt.data();
+            mainMix = ofToFloat(bs);
+//            getIt = m.getArgAsString(1);
+//            meter02 = ofToFloat(getIt);
+//            getIt = m.getArgAsString(2);
+//            meter03 = ofToFloat(getIt);
+//            getIt = m.getArgAsString(3);
+//            meter04 = ofToFloat(getIt);
+//            getIt = m.getArgAsString(4);
+//            meter05 = ofToFloat(getIt);
+//            getIt = m.getArgAsString(5);
+//            meter06 = ofToFloat(getIt);
+//            getIt = m.getArgAsString(6);
+//            meter07 = ofToFloat(getIt);
+            ofLogNotice("bs: "+ ofToString(bs));
         }
 //		if(m.getAddress() == "/main/mix"){
 //			// both the arguments are int32's
