@@ -60,7 +60,7 @@ void testApp::update(){
     ofLogNotice(ofToString(doRectCount));
     
 
-    if (rectCount%numXRects == 0) {
+    if (rectCount%numXRects == 0 && doRectCount) {
         rectX = 0;
         rectY += rectSize;
     }
