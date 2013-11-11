@@ -46,7 +46,7 @@ void testApp::update(){
     // Structured rectangles
     
     //If the signal is above a certain limit
-    if (meters[0] > 0.001) { //if percussion (ch04) occurs
+    if (meters[4] < 0.001) { //if percussion (ch04) occurs
         doRectCount = true; //don't count while stuff goes on
         
     }
@@ -59,6 +59,9 @@ void testApp::update(){
         if (rectCount%numXRects == 0) {
             rectX = 0;
             rectY += rectSize;
+        }
+        if (rectCount%numYRects == 0) {
+            rectY = 0;
         }
     }
     
@@ -77,7 +80,7 @@ void testApp::update(){
 //--------------------------------------------------------------
 void testApp::draw(){
     
-    drawHorizon();
+   // drawHorizon();
     
     // Structured rectangles
     
