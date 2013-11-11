@@ -43,6 +43,7 @@ class testApp : public ofBaseApp{
     int numYRects;
     int numRects;
     int rectCount;
+    bool doRectCount;
     
     // FUN STUFF
     int masterCounter;

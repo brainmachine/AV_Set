@@ -23,6 +23,7 @@ void testApp::setup(){
     numXRects = ofGetHeight()/rectSize-rectSpacing;
     numRects = numYRects*numXRects;
     rectCount = 0;
+    doRectCount = true;
     ofLogNotice("\n numYRects: "+ofToString(numYRects)+"\n numXRects: "+ofToString(numXRects)+"\n numRects: "+ofToString(numRects));
 }
 
@@ -50,11 +51,15 @@ void testApp::draw(){
     //drawHorizon();
     
     // Structured rectangles
-    if (meters[4] > 0) { //if percussion occurs
+    if (meters[4] > 0.001) { //if percussion occurs
         rectCount++;
-        rectX += rectSpacing;
-        ofSetColor(0, 255*meters[4], 0);
+        ofLogNotice(ofToString(rectCount));
+        rectX += rectSize;
+        ofSetColor(0, 255*meters[0], 255);
         ofRect(rectX, rectY, rectSize, rectSize);
+    }
+    if (rectCount%numXRects*rectSize) {
+        rectX = 0;
     }
 }
 
