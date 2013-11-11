@@ -38,14 +38,15 @@ void testApp::update(){
 //--------------------------------------------------------------
 void testApp::draw(){
     
-    drawHorizon();
+    //drawHorizon();
     
     // Structured rectangles
-    int xPos = ofGetWidth()/2+ofGetWidth()/2*meters[4];
+    int xPos = ofGetWidth()/2+ofGetWidth()/2*meters[4]; //percussion
     int yPos = ofGetHeight()/2;
     int rectSize = 100;
     ofSetColor(0, 255*meters[4], 0);
     ofRect(xPos, yPos, rectSize, rectSize);
+     
 }
 
 //--------------------------------------------------------------
@@ -74,7 +75,6 @@ void testApp::drawHorizon() {
             yStart -= meters[1]*10;
             xDest -= xDest*meters[1];
             yDest -= yDest*meters[1];
-            
         }
         
         ofSetColor(r, g, b); //Replace this with pixel colors from feed
@@ -94,6 +94,8 @@ void testApp::parseOSCMessages() {
             //Go through arguments, get them as floats
             for (int i = 0; i < m.getNumArgs(); i++) {
                 meters[i] = m.getArgAsFloat(i);
+                ofLogNotice("meter0"+ofToString(i)+": "+ofToString(meters[i]));
+
             }
         }
 	}
