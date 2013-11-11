@@ -49,7 +49,7 @@ class testApp : public ofBaseApp{
     int masterCounter;
     int direction;
     bool isFullScreen;
-    
+    bool didRectCount;
 
     
     

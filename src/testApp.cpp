@@ -24,6 +24,7 @@ void testApp::setup(){
     numRects = numYRects*numXRects;
     rectCount = 0;
     doRectCount = true;
+    didRectCount = false;
     ofLogNotice("\n numYRects: "+ofToString(numYRects)+"\n numXRects: "+ofToString(numXRects)+"\n numRects: "+ofToString(numRects));
 }
 
@@ -43,19 +44,28 @@ void testApp::update(){
     }
     
     // Structured rectangles
-    if (meters[4] > 0.001) { //if percussion (ch04) occurs
+    if (meters[0] > 0.001) { //if percussion (ch04) occurs
         doRectCount = true;
-        rectCount++;
-        ofLogNotice(ofToString(rectCount));
         rectX += rectSize;
         
     }
+    else {
+        didRectCount = doRectCount;
+        doRectCount = false;
+    }
+    if (doRectCount != didRectCount) {
+        rectCount++;
+        ofLogNotice(ofToString(rectCount));
+        didRectCount = true;
+        doRectCount = true;
+    }
+    
     if (rectCount%numXRects == 0) {
         rectX = 0;
         rectY += rectSize;
     }
     if (rectCount%numYRects == 0) {
-        rectY += rectSize;
+        rectY = 0;
     }
 
 }
