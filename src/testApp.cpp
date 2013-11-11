@@ -19,8 +19,8 @@ void testApp::setup(){
     rectY = 0;
     rectSize = 30;
     rectSpacing = 0;
-    numYRects = ofGetWidth()/rectSize-rectSpacing;
-    numXRects = ofGetHeight()/rectSize-rectSpacing;
+    numXRects = ofGetWidth()/rectSize-rectSpacing;
+    numYRects = ofGetHeight()/rectSize-rectSpacing;
     numRects = numYRects*numXRects;
     rectCount = 0;
     doRectCount = true;
@@ -41,7 +41,22 @@ void testApp::update(){
     if (masterCounter < -2000) {
         direction = 1;
     }
-
+    
+    // Structured rectangles
+    if (meters[4] > 0.001) { //if percussion (ch04) occurs
+        doRectCount = true;
+        rectCount++;
+        ofLogNotice(ofToString(rectCount));
+        rectX += rectSize;
+        
+    }
+    if (rectCount%numXRects == 0) {
+        rectX = 0;
+        rectY += rectSize;
+    }
+    if (rectCount%numYRects == 0) {
+        rectY += rectSize;
+    }
 
 }
 
@@ -51,16 +66,9 @@ void testApp::draw(){
     //drawHorizon();
     
     // Structured rectangles
-    if (meters[4] > 0.001) { //if percussion occurs
-        rectCount++;
-        ofLogNotice(ofToString(rectCount));
-        rectX += rectSize;
-        ofSetColor(0, 255*meters[0], 255);
-        ofRect(rectX, rectY, rectSize, rectSize);
-    }
-    if (rectCount%numXRects*rectSize) {
-        rectX = 0;
-    }
+    
+    ofSetColor(0, 255*meters[0], 255);
+    ofRect(rectX, rectY, rectSize, rectSize);
 }
 
 //--------------------------------------------------------------
