@@ -30,6 +30,8 @@ class testApp : public ofBaseApp{
     float mainMix;
     float chan01, chan02, chan03, chan04, chan05, chan06, chan07;
     float meter01, meter02, meter03, meter04, meter05, meter06, meter07;
+    float* meters;
+    
     
 
     

@@ -15,6 +15,8 @@ void testApp::setup(){
     mainMix = 0;
     chan01, chan02, chan03, chan04, chan05, chan06, chan07 = 0;
     meter01, meter02, meter03, meter04, meter05, meter06, meter07 = 0;
+    meters = new float[7];
+   
 }
 
 //--------------------------------------------------------------
@@ -82,24 +84,13 @@ void testApp::parseOSCMessages() {
 		ofxOscMessage m;
 		receiver.getNextMessage(&m);
         
-		// check for mouse moved message
+		// check for meter messages
         if(m.getAddress() == "/main/meter") {
-            string getIt = m.getArgAsString(0);
-            string bs = getIt.data();
-            mainMix = ofToFloat(bs);
-//            getIt = m.getArgAsString(1);
-//            meter02 = ofToFloat(getIt);
-//            getIt = m.getArgAsString(2);
-//            meter03 = ofToFloat(getIt);
-//            getIt = m.getArgAsString(3);
-//            meter04 = ofToFloat(getIt);
-//            getIt = m.getArgAsString(4);
-//            meter05 = ofToFloat(getIt);
-//            getIt = m.getArgAsString(5);
-//            meter06 = ofToFloat(getIt);
-//            getIt = m.getArgAsString(6);
-//            meter07 = ofToFloat(getIt);
-            ofLogNotice("bs: "+ ofToString(bs));
+            for (int i = 0; i < m.getNumArgs(); i++) {
+                meters[i] = m.getArgAsFloat(i);
+            }
+            mainMix = meters[1];
+            
         }
 //		if(m.getAddress() == "/main/mix"){
 //			// both the arguments are int32's
