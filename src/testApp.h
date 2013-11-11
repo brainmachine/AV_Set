@@ -33,7 +33,16 @@ class testApp : public ofBaseApp{
     float* meters;
     
     
-
+    // RECT STUFF
+    int rectX;
+    int rectY;
+    int rectSize;
+    int rectSpacing;
+    
+    int numXRects;
+    int numYRects;
+    int numRects;
+    int rectCount;
     
     // FUN STUFF
     int masterCounter;

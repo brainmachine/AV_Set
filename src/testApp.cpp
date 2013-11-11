@@ -12,9 +12,17 @@ void testApp::setup(){
     
     // OSC STUFF
     receiver.setup(PORT);
-    mainMix = 0;
     meters = new float[7];
-   
+    
+    //RECT STUFF
+    rectX = 0;
+    rectY = 0;
+    rectSize = 30;
+    rectSpacing = 0;
+    numYRects = ofGetWidth()/rectSize-rectSpacing;
+    numXRects = ofGetHeight()/rectSize-rectSpacing;
+    numRects = numYRects*numXRects;
+    rectCount = 0;
 }
 
 //--------------------------------------------------------------
@@ -41,6 +49,7 @@ void testApp::draw(){
     //drawHorizon();
     
     // Structured rectangles
+    
     int xPos = ofGetWidth()/2+ofGetWidth()/2*meters[4]; //percussion
     int yPos = ofGetHeight()/2;
     int rectSize = 100;
@@ -94,8 +103,7 @@ void testApp::parseOSCMessages() {
             //Go through arguments, get them as floats
             for (int i = 0; i < m.getNumArgs(); i++) {
                 meters[i] = m.getArgAsFloat(i);
-                ofLogNotice("meter0"+ofToString(i)+": "+ofToString(meters[i]));
-
+               // ofLogNotice("meter0"+ofToString(i)+": "+ofToString(meters[i]));
             }
         }
 	}
