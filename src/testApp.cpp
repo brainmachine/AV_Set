@@ -46,19 +46,19 @@ void testApp::update(){
     // Structured rectangles
     
     //If the signal is above a certain limit
-    if (meters[4] > 0.001) { //if percussion (ch04) occurs
-        doRectCount = false; //don't count while stuff goes on
+    if (meters[0] > 0.001) { //if percussion (ch04) occurs
+        doRectCount = true; //don't count while stuff goes on
+        
+    }
+    
+    else if (doRectCount) {
         rectX += rectSize;
-        
-    }
-    //If the signal gets to zero, advance the counter and set doRectCount to false
-    else {
-        if (doRectCount) {
-            rectCount++;
-        }
+        rectCount++;
         doRectCount = false;
-        
     }
+    
+    ofLogNotice(ofToString(doRectCount));
+    
 
     if (rectCount%numXRects == 0) {
         rectX = 0;
