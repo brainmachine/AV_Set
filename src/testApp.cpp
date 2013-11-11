@@ -55,15 +55,21 @@ void testApp::update(){
         rectX += rectSize;
         rectCount++;
         doRectCount = false;
+        
+        if (rectCount%numXRects == 0) {
+            rectX = 0;
+            rectY += rectSize;
+        }
     }
     
     ofLogNotice(ofToString(doRectCount));
     
 
-    if (rectCount%numXRects == 0 && doRectCount) {
-        rectX = 0;
-        rectY += rectSize;
-    }
+//    if (rectCount%numXRects == 0 && doRectCount) {
+//        
+//        doRectCount = false;
+//    }
+   
     
     
 }
