@@ -86,12 +86,18 @@ void testApp::parseOSCMessages() {
         if(m.getAddress() == "/main/meter") {
             string getIt = m.getArgAsString(0);
             mainMix = ofToFloat(getIt);
-            meter02 = m.getArgAsFloat(1);
-            meter03 = m.getArgAsFloat(2);
-            meter04 = m.getArgAsFloat(3);
-            meter05 = m.getArgAsFloat(4);
-            meter06 = m.getArgAsFloat(5);
-            meter07 = m.getArgAsFloat(6);
+            getIt = m.getArgAsString(1);
+            meter02 = ofToFloat(getIt);
+            getIt = m.getArgAsString(2);
+            meter03 = ofToFloat(getIt);
+            getIt = m.getArgAsString(3);
+            meter04 = ofToFloat(getIt);
+            getIt = m.getArgAsString(4);
+            meter05 = ofToFloat(getIt);
+            getIt = m.getArgAsString(5);
+            meter06 = ofToFloat(getIt);
+            getIt = m.getArgAsString(6);
+            meter07 = ofToFloat(getIt);
             ofLogNotice("meter01: "+ ofToString(getIt));
         }
 //		if(m.getAddress() == "/main/mix"){
