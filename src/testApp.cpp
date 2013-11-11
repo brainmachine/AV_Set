@@ -50,13 +50,12 @@ void testApp::draw(){
     //drawHorizon();
     
     // Structured rectangles
-    
-    int xPos = ofGetWidth()/2+ofGetWidth()/2*meters[4]; //percussion
-    int yPos = ofGetHeight()/2;
-    int rectSize = 100;
-    ofSetColor(0, 255*meters[4], 0);
-    ofRect(xPos, yPos, rectSize, rectSize);
-     
+    if (meters[4] > 0) { //if percussion occurs
+        rectCount++;
+        rectX += rectSpacing;
+        ofSetColor(0, 255*meters[4], 0);
+        ofRect(rectX, rectY, rectSize, rectSize);
+    }
 }
 
 //--------------------------------------------------------------
