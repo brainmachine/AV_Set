@@ -23,6 +23,8 @@ class testApp : public ofBaseApp{
 		void dragEvent(ofDragInfo dragInfo);
 		void gotMessage(ofMessage msg);
         void parseOSCMessages();
+        void drawHorizon();
+    
     
 		
     //OSC stuff

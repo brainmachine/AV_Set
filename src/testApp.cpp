@@ -39,11 +39,19 @@ void testApp::update(){
 
 //--------------------------------------------------------------
 void testApp::draw(){
-    //normalize mouse (within the window space...
-    float daMouseX = float(mouseX)/float(ofGetWidth());
-    float daMouseY = float(mouseY)/float(ofGetHeight());
-   // ofLogNotice(ofToString(daMouseX));
     
+    drawHorizon();
+    
+    // Structured rectangles
+    int xPos = ofGetWidth()/2+ofGetWidth()/2*meters[4];
+    int yPos = ofGetHeight()/2;
+    int rectSize = 100;
+    ofSetColor(0, 255*meters[4], 0);
+    ofRect(xPos, yPos, rectSize, rectSize);
+}
+
+//--------------------------------------------------------------
+void testApp::drawHorizon() {
     //Abstract line stuff
     for (int i = 0; i < ofGetWidth(); i++) {
         
@@ -65,17 +73,16 @@ void testApp::draw(){
             yDest += yDest*mainMix;
         }
         else {
-           yStart -= mainMix*10;
+            yStart -= mainMix*10;
             xDest -= xDest*mainMix;
             yDest -= yDest*mainMix;
             
         }
-
+        
         ofSetColor(r, g, b); //Replace this with pixel colors from feed
-         ofLine(xStart, yStart, xDest, yDest);    }
-
+        ofLine(xStart, yStart, xDest, yDest);
+    }
 }
-
 //--------------------------------------------------------------
 void testApp::parseOSCMessages() {
     // check for waiting messages
