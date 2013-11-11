@@ -44,36 +44,34 @@ void testApp::update(){
     }
     
     // Structured rectangles
-    if (meters[0] > 0.001) { //if percussion (ch04) occurs
-        doRectCount = true;
+    
+    //If the signal is above a certain limit
+    if (meters[4] > 0.001) { //if percussion (ch04) occurs
+        doRectCount = false; //don't count while stuff goes on
         rectX += rectSize;
         
     }
+    //If the signal gets to zero, advance the counter and set doRectCount to false
     else {
-        didRectCount = doRectCount;
+        if (doRectCount) {
+            rectCount++;
+        }
         doRectCount = false;
+        
     }
-    if (doRectCount != didRectCount) {
-        rectCount++;
-        ofLogNotice(ofToString(rectCount));
-        didRectCount = true;
-        doRectCount = true;
-    }
-    
+
     if (rectCount%numXRects == 0) {
         rectX = 0;
         rectY += rectSize;
     }
-    if (rectCount%numYRects == 0) {
-        rectY = 0;
-    }
-
+    
+    
 }
 
 //--------------------------------------------------------------
 void testApp::draw(){
     
-    //drawHorizon();
+    drawHorizon();
     
     // Structured rectangles
     
@@ -128,6 +126,9 @@ void testApp::parseOSCMessages() {
                 meters[i] = m.getArgAsFloat(i);
                // ofLogNotice("meter0"+ofToString(i)+": "+ofToString(meters[i]));
             }
+        }
+        else if(m.getAddress() == "/main/trigger") {
+            
         }
 	}
 }
