@@ -48,9 +48,9 @@ void testApp::draw(){
     for (int i = 0; i < ofGetWidth(); i++) {
         
         // set the color for each line
-        int r = daMouseX*sin(masterCounter)/4;
-        int g = i/4;
-        int b = daMouseX*daMouseY*i/4;
+        int r = meters[0]*255;
+        int g = meters[1]*255;
+        int b = meters[2]*255;
         
         // line start and destination
         int xStart = i;
@@ -86,47 +86,12 @@ void testApp::parseOSCMessages() {
         
 		// check for meter messages
         if(m.getAddress() == "/main/meter") {
+            //Go through arguments, get them as floats
             for (int i = 0; i < m.getNumArgs(); i++) {
                 meters[i] = m.getArgAsFloat(i);
             }
             mainMix = meters[1];
-            
         }
-//		if(m.getAddress() == "/main/mix"){
-//			// both the arguments are int32's
-//			mainMix = m.getArgAsFloat(0);
-//            ofLogNotice("mainMix: "+ofToString(m.getArgAsFloat(0)));
-//		}
-//        else if (m.getAddress() == "/main/chan/one") {
-//            chan01 = m.getArgAsFloat(0);
-//            if (chan01 < 1) { //stop the weird numbers
-//                ofLogNotice("chan/one: "+ofToString(chan01));
-//            }
-//        }
-//        else if (m.getAddress() == "/main/chan/two") {
-//            chan02 = m.getArgAsFloat(0);
-//            ofLogNotice("chan/two: "+ofToString(chan02));
-//        }
-//        else if (m.getAddress() == "/main/chan/three") {
-//            chan03 = m.getArgAsFloat(0);
-//            ofLogNotice("chan/three: "+ofToString(chan03));
-//        }
-//        else if (m.getAddress() == "/main/chan/four") {
-//            chan04 = m.getArgAsFloat(0);
-//            ofLogNotice("chan/four: "+ofToString(chan04));
-//        }
-//        else if (m.getAddress() == "/main/chan/five") {
-//            chan05 = m.getArgAsFloat(0);
-//            ofLogNotice("chan/five: : "+ofToString(chan05));
-//        }
-//        else if (m.getAddress() == "/main/chan/six") {
-//            chan06 = m.getArgAsFloat(0);
-//            ofLogNotice("chan/six: "+ofToString(chan06));
-//        }
-//        else if (m.getAddress() == "/main/chan/seven") {
-//            chan07 = m.getArgAsFloat(0);
-//            ofLogNotice("chan/seven "+ofToString(chan07));
-//        }
 	}
 }
 
