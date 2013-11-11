@@ -13,8 +13,6 @@ void testApp::setup(){
     // OSC STUFF
     receiver.setup(PORT);
     mainMix = 0;
-    chan01, chan02, chan03, chan04, chan05, chan06, chan07 = 0;
-    meter01, meter02, meter03, meter04, meter05, meter06, meter07 = 0;
     meters = new float[7];
    
 }
@@ -64,18 +62,18 @@ void testApp::drawHorizon() {
         int xStart = i;
         int yStart = ofGetHeight()/2;
         int xDest = i*sin(i)*400; //400 is arbitrary.
-        int yDest = i*cos(i)*masterCounter*mainMix;
+        int yDest = i*cos(i)*masterCounter*meters[1];
         
         //shake the signal
         if (masterCounter%2 == 0) {
-            yStart += mainMix*10;
-            xDest += xDest*mainMix;
-            yDest += yDest*mainMix;
+            yStart += meters[1]*10;
+            xDest += xDest*meters[1];
+            yDest += yDest*meters[1];
         }
         else {
-            yStart -= mainMix*10;
-            xDest -= xDest*mainMix;
-            yDest -= yDest*mainMix;
+            yStart -= meters[1]*10;
+            xDest -= xDest*meters[1];
+            yDest -= yDest*meters[1];
             
         }
         
@@ -97,7 +95,6 @@ void testApp::parseOSCMessages() {
             for (int i = 0; i < m.getNumArgs(); i++) {
                 meters[i] = m.getArgAsFloat(i);
             }
-            mainMix = meters[1];
         }
 	}
 }
