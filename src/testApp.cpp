@@ -63,7 +63,7 @@ void testApp::draw(){
     drawHorizon();
     
     // Structured rectangles
-    rectXPos = rectCount * rectSize;
+    rectXPos = (rectCount * rectSize)%ofGetWidth();
     
     ofSetColor(0, 255*meters[0], 255);
     ofRect(rectXPos, rectYPos, rectSize, rectSize);
