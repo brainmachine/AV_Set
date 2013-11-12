@@ -45,14 +45,6 @@ void testApp::update(){
     // STRUCTURED RECTANGLES
     
     
-    //ofLogNotice(ofToString(doRectCount));
-    
-
-//    if (rectCount%numXRects == 0 && doRectCount) {
-//        
-//        doRectCount = false;
-//    }
-   
     
     
 }
@@ -63,7 +55,8 @@ void testApp::draw(){
     drawHorizon();
     
     // Structured rectangles
-    rectXPos = (rectCount * rectSize)%ofGetWidth();
+    
+    
     
     ofSetColor(0, 255*meters[0], 255);
     ofRect(rectXPos, rectYPos, rectSize, rectSize);
@@ -87,6 +80,11 @@ void testApp::parseOSCMessages() {
         }
         else if(m.getAddress() == "/main/trigger") {
             rectCount += m.getArgAsInt32(0);
+            rectXPos = (rectCount * rectSize)%ofGetWidth();
+            if (rectCount%numXRects==0) {
+                ofLogNotice("should go to new line");
+                rectYPos += rectSize;
+            }
           //  ofLogNotice(ofToString(rectCount));
         }
 	}
