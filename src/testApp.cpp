@@ -52,13 +52,13 @@ void testApp::update(){
 //--------------------------------------------------------------
 void testApp::draw(){
     
-    drawHorizon();
+   // drawHorizon();
     
     // Structured rectangles
     
     
     
-    ofSetColor(0, 255*meters[0], 255);
+    ofSetColor(255*meters[0], 255*meters[0], 255*(1-meters[4]));
     ofRect(rectXPos, rectYPos, rectSize, rectSize);
 }
 
