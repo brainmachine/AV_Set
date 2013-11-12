@@ -34,8 +34,8 @@ class testApp : public ofBaseApp{
     
     
     // RECT STUFF
-    int rectX;
-    int rectY;
+    int rectXPos;
+    int rectYPos;
     int rectSize;
     int rectSpacing;
     
@@ -49,7 +49,7 @@ class testApp : public ofBaseApp{
     int masterCounter;
     int direction;
     bool isFullScreen;
-    bool didRectCount;
+
 
     
     

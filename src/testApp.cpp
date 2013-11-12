@@ -15,8 +15,8 @@ void testApp::setup(){
     meters = new float[7];
     
     //RECT STUFF
-    rectX = 0;
-    rectY = 0;
+    rectXPos = 0;
+    rectYPos = 0;
     rectSize = 30;
     rectSpacing = 0;
     numXRects = ofGetWidth()/rectSize-rectSpacing;
@@ -24,7 +24,6 @@ void testApp::setup(){
     numRects = numYRects*numXRects;
     rectCount = 0;
     doRectCount = true;
-    didRectCount = false;
     ofLogNotice("\n numYRects: "+ofToString(numYRects)+"\n numXRects: "+ofToString(numXRects)+"\n numRects: "+ofToString(numRects));
 }
 
@@ -45,18 +44,18 @@ void testApp::update(){
     
     // STRUCTURED RECTANGLES
     
-    rectX += rectSize;
+    rectXPos += rectSize;
 
-    if (rectCount%numYRects == 0) {
-        rectX = 0;
-        rectY += rectSize;
+    if (rectCount%numXRects == 0) {
+        rectXPos = 0;
+        rectYPos += rectSize;
     }
     if (rectCount%numXRects == 0) {
-        rectY = 0;
+        rectYPos = 0;
     }
     
     
-    ofLogNotice(ofToString(doRectCount));
+    //ofLogNotice(ofToString(doRectCount));
     
 
 //    if (rectCount%numXRects == 0 && doRectCount) {
@@ -76,7 +75,7 @@ void testApp::draw(){
     // Structured rectangles
     
     ofSetColor(0, 255*meters[0], 255);
-   // ofRect(rectX, rectY, rectSize, rectSize);
+    ofRect(rectXPos, rectYPos, rectSize, rectSize);
 }
 
 //--------------------------------------------------------------
@@ -128,7 +127,8 @@ void testApp::parseOSCMessages() {
             }
         }
         else if(m.getAddress() == "/main/trigger") {
-            
+            rectCount += m.getArgAsFloat(0);
+            ofLogNotice(ofToString(rectCount));
         }
 	}
 }
