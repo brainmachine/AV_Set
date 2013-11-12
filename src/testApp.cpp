@@ -44,16 +44,6 @@ void testApp::update(){
     
     // STRUCTURED RECTANGLES
     
-    rectXPos += rectSize;
-
-    if (rectCount%numXRects == 0) {
-        rectXPos = 0;
-        rectYPos += rectSize;
-    }
-    if (rectCount%numXRects == 0) {
-        rectYPos = 0;
-    }
-    
     
     //ofLogNotice(ofToString(doRectCount));
     
@@ -73,11 +63,34 @@ void testApp::draw(){
     drawHorizon();
     
     // Structured rectangles
+    rectXPos = rectCount * rectSize;
     
     ofSetColor(0, 255*meters[0], 255);
     ofRect(rectXPos, rectYPos, rectSize, rectSize);
 }
 
+//--------------------------------------------------------------
+void testApp::parseOSCMessages() {
+    // check for waiting messages
+	while(receiver.hasWaitingMessages()){
+		// get the next message
+		ofxOscMessage m;
+		receiver.getNextMessage(&m);
+        
+		// check for meter messages
+        if(m.getAddress() == "/main/meter") {
+            //Go through arguments, get them as floats
+            for (int i = 0; i < m.getNumArgs(); i++) {
+                meters[i] = m.getArgAsFloat(i);
+               // ofLogNotice("meter0"+ofToString(i)+": "+ofToString(meters[i]));
+            }
+        }
+        else if(m.getAddress() == "/main/trigger") {
+            rectCount += m.getArgAsInt32(0);
+          //  ofLogNotice(ofToString(rectCount));
+        }
+	}
+}
 //--------------------------------------------------------------
 void testApp::drawHorizon() {
     //Abstract line stuff
@@ -109,28 +122,6 @@ void testApp::drawHorizon() {
         ofSetColor(r, g, b); //Replace this with pixel colors from feed
         ofLine(xStart, yStart, xDest, yDest);
     }
-}
-//--------------------------------------------------------------
-void testApp::parseOSCMessages() {
-    // check for waiting messages
-	while(receiver.hasWaitingMessages()){
-		// get the next message
-		ofxOscMessage m;
-		receiver.getNextMessage(&m);
-        
-		// check for meter messages
-        if(m.getAddress() == "/main/meter") {
-            //Go through arguments, get them as floats
-            for (int i = 0; i < m.getNumArgs(); i++) {
-                meters[i] = m.getArgAsFloat(i);
-               // ofLogNotice("meter0"+ofToString(i)+": "+ofToString(meters[i]));
-            }
-        }
-        else if(m.getAddress() == "/main/trigger") {
-            rectCount += m.getArgAsFloat(0);
-            ofLogNotice(ofToString(rectCount));
-        }
-	}
 }
 
 //--------------------------------------------------------------
