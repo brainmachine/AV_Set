@@ -83,7 +83,7 @@ void testApp::parseOSCMessages() {
             rectXPos = (rectCount * rectSize)%ofGetWidth();
             if (rectCount%numXRects==0) {
                 ofLogNotice("should go to new line");
-                rectYPos += rectSize;
+                rectYPos += rectSize%ofGetHeight();
             }
           //  ofLogNotice(ofToString(rectCount));
         }
