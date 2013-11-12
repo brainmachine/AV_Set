@@ -80,14 +80,20 @@ void testApp::parseOSCMessages() {
         }
         else if(m.getAddress() == "/main/trigger") {
             rectCount += m.getArgAsInt32(0);
-            rectXPos = (rectCount * rectSize)%ofGetWidth();
-            if (rectCount%numXRects==0) {
-                ofLogNotice("should go to new line");
-                rectYPos += rectSize%ofGetHeight();
-            }
+            makeRect(rectCount);
           //  ofLogNotice(ofToString(rectCount));
         }
 	}
+}
+
+//--------------------------------------------------------------
+void testApp::makeRect(int rectIndex) {
+    rectCount = rectIndex;
+    rectXPos = (rectCount * rectSize)%ofGetWidth();
+    if (rectCount%numXRects==0) {
+        ofLogNotice("should go to new line");
+        rectYPos += rectSize%ofGetHeight();
+    }
 }
 //--------------------------------------------------------------
 void testApp::drawHorizon() {

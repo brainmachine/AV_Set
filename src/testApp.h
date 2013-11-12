@@ -24,7 +24,7 @@ class testApp : public ofBaseApp{
 		void gotMessage(ofMessage msg);
         void parseOSCMessages();
         void drawHorizon();
-    
+        void makeRect(int rectIndex);
     
 		
     //OSC stuff
