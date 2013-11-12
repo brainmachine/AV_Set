@@ -43,27 +43,18 @@ void testApp::update(){
         direction = 1;
     }
     
-    // Structured rectangles
+    // STRUCTURED RECTANGLES
     
-    //If the signal is above a certain limit
-    if (meters[4] < 0.001) { //if percussion (ch04) occurs
-        doRectCount = true; //don't count while stuff goes on
-        
+    rectX += rectSize;
+
+    if (rectCount%numYRects == 0) {
+        rectX = 0;
+        rectY += rectSize;
+    }
+    if (rectCount%numXRects == 0) {
+        rectY = 0;
     }
     
-    else if (doRectCount) {
-        rectX += rectSize;
-        rectCount++;
-        doRectCount = false;
-        
-        if (rectCount%numYRects == 0) {
-            rectX = 0;
-            rectY += rectSize;
-        }
-        if (rectCount%numXRects == 0) {
-            rectY = 0;
-        }
-    }
     
     ofLogNotice(ofToString(doRectCount));
     
