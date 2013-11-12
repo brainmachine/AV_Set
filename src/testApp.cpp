@@ -56,11 +56,11 @@ void testApp::update(){
         rectCount++;
         doRectCount = false;
         
-        if (rectCount%numXRects == 0) {
+        if (rectCount%numYRects == 0) {
             rectX = 0;
             rectY += rectSize;
         }
-        if (rectCount%numYRects == 0) {
+        if (rectCount%numXRects == 0) {
             rectY = 0;
         }
     }
@@ -80,12 +80,12 @@ void testApp::update(){
 //--------------------------------------------------------------
 void testApp::draw(){
     
-   // drawHorizon();
+    drawHorizon();
     
     // Structured rectangles
     
     ofSetColor(0, 255*meters[0], 255);
-    ofRect(rectX, rectY, rectSize, rectSize);
+   // ofRect(rectX, rectY, rectSize, rectSize);
 }
 
 //--------------------------------------------------------------
