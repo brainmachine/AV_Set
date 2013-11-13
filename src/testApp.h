@@ -24,8 +24,7 @@ class testApp : public ofBaseApp{
 		void gotMessage(ofMessage msg);
         void parseOSCMessages();
         void drawHorizon();
-        void updateRect(int rectIndex);
-        void drawRect();
+    
 		
     //OSC stuff
     ofxOscReceiver receiver;
@@ -35,6 +34,28 @@ class testApp : public ofBaseApp{
     float* _triggers;
     
     
+
+    
+    // FUN STUFF
+    int masterCounter;
+    int direction;
+    bool isFullScreen;
+    
+    // FBOs
+    ofFbo rectFBO;
+    ofFbo horizonFBO;
+
+    
+    
+    
+};
+
+class rectMaker : testApp  {
+    void setupRect();
+    void updateRect(int rectIndex);
+    void drawRect();
+    
+public:
     // RECT STUFF
     int rectXPos;
     int rectYPos;
@@ -46,17 +67,4 @@ class testApp : public ofBaseApp{
     int numRects;
     int rectCount;
     bool doRectCount;
-    
-    // FUN STUFF
-    int masterCounter;
-    int direction;
-    bool isFullScreen;
-    
-    // FBOs
-    ofFbo rectFBO;
-    ofFbo horizonFBO;
-
-
-    
-    
 };

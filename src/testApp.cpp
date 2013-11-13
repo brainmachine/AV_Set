@@ -21,17 +21,6 @@ void testApp::setup(){
         _triggers[i] = 0;
     }
     
-    //RECT STUFF
-    rectXPos = 0;
-    rectYPos = 0;
-    rectSize = 30;
-    rectSpacing = 0;
-    numXRects = ofGetWidth()/rectSize-rectSpacing;
-    numYRects = ofGetHeight()/rectSize-rectSpacing;
-    numRects = numYRects*numXRects;
-    rectCount = 0;
-    doRectCount = true;
-    ofLogNotice("\n numYRects: "+ofToString(numYRects)+"\n numXRects: "+ofToString(numXRects)+"\n numRects: "+ofToString(numRects));
     
     // FBO INIT
     // FBOs
@@ -80,7 +69,7 @@ void testApp::draw(){
     
     
     rectFBO.begin();
-    drawRect();
+    
     rectFBO.end();
     
     rectFBO.draw(0,0);
@@ -116,12 +105,14 @@ void testApp::parseOSCMessages() {
                 //do your triggering in here:
                 if (triggers[i] != _triggers[i] && triggers[i] != 0) {
                     triggers[i] = m.getArgAsFloat(i);
-                    rectCount += triggers[i]; //add 1 or 0. only counts the 1's
-                    updateRect(rectCount);
-                }
+                    ofLogNotice("triggers: "+ofToString(triggers[i]));
+                    //do what you want in here:
+//                    rectCount += triggers[i]*numXRects*i; //add 1 or 0. only counts the 1's
+//                    updateRect(rectCount);
                 
             }
-            //do what you want in here:
+            
+            }
             
             
             //set previous trigger msgs
@@ -133,8 +124,22 @@ void testApp::parseOSCMessages() {
 	}
 }
 
+void rectMaker::setupRect() {
+    //RECT STUFF
+    rectXPos = 0;
+    rectYPos = 0;
+    rectSize = 30;
+    rectSpacing = 0;
+    numXRects = ofGetWidth()/rectSize-rectSpacing;
+    numYRects = ofGetHeight()/rectSize-rectSpacing;
+    numRects = numYRects*numXRects;
+    rectCount = 0;
+    doRectCount = true;
+    ofLogNotice("\n numYRects: "+ofToString(numYRects)+"\n numXRects: "+ofToString(numXRects)+"\n numRects: "+ofToString(numRects));
+
+}
 //--------------------------------------------------------------
-void testApp::updateRect(int rectIndex) {
+void rectMaker::updateRect(int rectIndex) {
     rectCount = rectIndex;
     rectXPos = (rectCount * rectSize)%ofGetWidth();
     if (rectCount%numXRects==0) {
@@ -142,11 +147,11 @@ void testApp::updateRect(int rectIndex) {
         rectYPos += rectSize%ofGetHeight();
         ofLogNotice("rectCount: "+ofToString(rectCount));
     }
-    if (rectCount > numRects) {
-        
+    if (rectCount >= numRects) {
+        rectYPos = 0;
     }
 }
-void testApp::drawRect() {
+void rectMaker::drawRect() {
     ofSetColor(255*meters[0], 255*meters[0], 255*(1-meters[4]));
     ofRect(rectXPos, rectYPos, rectSize, rectSize);
 }
