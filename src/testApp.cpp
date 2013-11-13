@@ -78,11 +78,17 @@ void testApp::parseOSCMessages() {
                // ofLogNotice("meter0"+ofToString(i)+": "+ofToString(meters[i]));
             }
         }
-        else if(m.getAddress() == "/main/trigger") {
-            for (int i = 0; i < 7; i++) {
-            rectCount += m.getArgAsInt32(i);
-            makeRect(rectCount+i);
+        else if(m.getAddress() == "/main/trigger")
+        {
+            for (int i = 0; i < m.getNumArgs(); i++) {
+               rectCount += m.getArgAsInt32(i);
+                makeRect(rectCount);
             }
+            
+           // for (int i = 0; i < 7; i++) {
+            
+            
+            //}
           //  ofLogNotice(ofToString(rectCount));
         }
 	}
