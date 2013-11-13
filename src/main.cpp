@@ -1,5 +1,6 @@
 #include "ofMain.h"
 #include "testApp.h"
+#include "horizon.h"
 
 //========================================================================
 int main( ){

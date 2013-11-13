@@ -2,7 +2,7 @@
 
 #include "ofMain.h"
 #include "ofxOsc.h"
-
+#include "horizon.h"
 // listen on port 12345
 #define PORT 12345
 
