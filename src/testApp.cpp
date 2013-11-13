@@ -82,11 +82,8 @@ void testApp::parseOSCMessages() {
         }
         else if(m.getAddress() == "/main/trigger")
         {
-            for (int i = 0; i < m.getNumArgs(); i++) {
-               rectCount += m.getArgAsInt32(0);
-                
-                //makeRect(rectCount);
-            }
+            
+            rectCount += m.getArgAsInt32(0);
             makeRect(rectCount);
            // for (int i = 0; i < 7; i++) {
             
