@@ -101,10 +101,6 @@ void testApp::parseOSCMessages() {
                     rectCount += 1; //add 1 or 0. only counts the 1's
                     makeRect(rectCount);
                 }
-                else {
-                    triggers[i] = 0;
-                }
-                //rectCount += m.getArgAsFloat(i);
                 
             }
             //do what you want in here:
