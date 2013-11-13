@@ -10,7 +10,7 @@
 
 
 //--------------------------------------------------------------
-void horizon::drawHorizon() {
+/*void horizon::drawHorizon() {
     //Abstract line stuff
     // set the color for each line
     int r = meters[0]*255;
@@ -42,3 +42,4 @@ void horizon::drawHorizon() {
         ofLine(xStart, yStart, xDest, yDest);
     }
 }
+*/
