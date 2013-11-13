@@ -59,7 +59,7 @@ void testApp::update(){
 //--------------------------------------------------------------
 void testApp::draw(){
     
-   // drawHorizon();
+    drawHorizon();
     
     // Structured rectangles
     
@@ -134,12 +134,14 @@ void testApp::drawRect() {
 //--------------------------------------------------------------
 void testApp::drawHorizon() {
     //Abstract line stuff
+    // set the color for each line
+    int r = meters[0]*255;
+    int g = meters[1]*255;
+    int b = meters[2]*255;
+    ofSetColor(r, g, b); //Replace this with pixel colors from feed
+
     for (int i = 0; i < ofGetWidth(); i++) {
         
-        // set the color for each line
-        int r = meters[0]*255;
-        int g = meters[1]*255;
-        int b = meters[2]*255;
         
         // line start and destination
         int xStart = i;
@@ -159,8 +161,7 @@ void testApp::drawHorizon() {
             yDest -= yDest*meters[1];
         }
         
-        ofSetColor(r, g, b); //Replace this with pixel colors from feed
-        ofLine(xStart, yStart, xDest, yDest);
+                ofLine(xStart, yStart, xDest, yDest);
     }
 }
 
