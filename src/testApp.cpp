@@ -87,19 +87,25 @@ void testApp::parseOSCMessages() {
         }
         else if(m.getAddress() == "/main/trigger")
         {
+            //populate triggers
+            for (int i = 0; i < m.getNumArgs(); i++) {
+                triggers[i] = m.getArgAsFloat(i);
+            }
             
             //only update triggers if the message is new
             for (int i = 0; i < m.getNumArgs(); i++) {
                 
-                //populate triggers
-                for (int i = 0; i < m.getNumArgs(); i++) {
+                
+                if (triggers[i] != _triggers[i]) {
                     triggers[i] = m.getArgAsFloat(i);
-                }
-                if (m.getArgAsFloat(i) != _triggers[i]) {
-                    triggers[i] = m.getArgAsFloat(i);
-                    rectCount += m.getArgAsFloat(i);
+                    rectCount += 1;
                     makeRect(rectCount);
                 }
+                else {
+                    triggers[i] = 0;
+                }
+                //rectCount += m.getArgAsFloat(i);
+                
             }
             //do what you want in here:
             
