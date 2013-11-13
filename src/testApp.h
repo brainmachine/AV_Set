@@ -31,8 +31,8 @@ class testApp : public ofBaseApp{
     ofxOscReceiver receiver;
     float mainMix;
     float* meters;
-    int* triggers;
-    int* _triggers;
+    float* triggers;
+    float* _triggers;
     
     
     // RECT STUFF

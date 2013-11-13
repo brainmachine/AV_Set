@@ -13,8 +13,13 @@ void testApp::setup(){
     // OSC STUFF
     receiver.setup(PORT);
     meters = new float[7];
-    triggers = new int[7];
-    _triggers = new int[7];
+    triggers = new float[7];
+    _triggers = new float[7];
+    //populate triggers
+    for (int i = 0; i < 7; i++) {
+        triggers[i] = 0;
+        _triggers[i] = 0;
+    }
     
     //RECT STUFF
     rectXPos = 0;
@@ -32,7 +37,7 @@ void testApp::setup(){
 //--------------------------------------------------------------
 void testApp::update(){
 
-    
+
 	parseOSCMessages();
     
     // FUN STUFF
@@ -83,13 +88,22 @@ void testApp::parseOSCMessages() {
         else if(m.getAddress() == "/main/trigger")
         {
             
-            rectCount += m.getArgAsInt32(0);
-            makeRect(rectCount);
-           // for (int i = 0; i < 7; i++) {
+            //only update triggers if the message is new
+            for (int i = 0; i < m.getNumArgs(); i++) {
+                if (m.getArgAsFloat(i) != _triggers[i]) {
+                    triggers[i] = m.getArgAsFloat(i);
+                    rectCount += m.getArgAsFloat(i);
+                    makeRect(rectCount);
+                }
+            }
+            //do what you want in here:
             
             
-            //}
-          //  ofLogNotice(ofToString(rectCount));
+            //set previous trigger msgs
+            for (int i = 0; i < m.getNumArgs(); i++) {
+                _triggers[i] = triggers[i];
+            }
+            
         }
 	}
 }
@@ -101,6 +115,10 @@ void testApp::makeRect(int rectIndex) {
     if (rectCount%numXRects==0) {
         ofLogNotice("should go to new line");
         rectYPos += rectSize%ofGetHeight();
+        ofLogNotice("rectYPos: "+ofToString(rectYPos));
+    }
+    if (rectYPos > numRects) {
+        
     }
 }
 //--------------------------------------------------------------
