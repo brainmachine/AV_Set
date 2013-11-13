@@ -51,6 +51,10 @@ class testApp : public ofBaseApp{
     int masterCounter;
     int direction;
     bool isFullScreen;
+    
+    // FBOs
+    ofFbo rectFBO;
+    ofFbo horizonFBO;
 
 
     

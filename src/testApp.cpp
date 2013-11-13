@@ -32,6 +32,18 @@ void testApp::setup(){
     rectCount = 0;
     doRectCount = true;
     ofLogNotice("\n numYRects: "+ofToString(numYRects)+"\n numXRects: "+ofToString(numXRects)+"\n numRects: "+ofToString(numRects));
+    
+    // FBO INIT
+    // FBOs
+    rectFBO.allocate(ofGetWidth(), ofGetHeight(), GL_RGBA);
+    rectFBO.begin();
+    ofClear(255,255,255, 0);
+    rectFBO.end();
+    
+    horizonFBO.allocate(ofGetWidth(), ofGetHeight(), GL_RGBA);
+    horizonFBO.begin();
+    ofClear(255,255,255, 0);
+    horizonFBO.end();
 }
 
 //--------------------------------------------------------------
@@ -59,13 +71,20 @@ void testApp::update(){
 //--------------------------------------------------------------
 void testApp::draw(){
     
+    horizonFBO.begin();
+    ofClear(255, 255, 255, 0);
     drawHorizon();
+    horizonFBO.end();
     
     // Structured rectangles
     
     
-    
+    rectFBO.begin();
     drawRect();
+    rectFBO.end();
+    
+    rectFBO.draw(0,0);
+    horizonFBO.draw(0,0);
 }
 
 //--------------------------------------------------------------
