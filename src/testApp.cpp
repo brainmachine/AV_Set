@@ -96,9 +96,9 @@ void testApp::parseOSCMessages() {
             for (int i = 0; i < m.getNumArgs(); i++) {
                 
                 
-                if (triggers[i] != _triggers[i]) {
+                if (triggers[i] != _triggers[i] && triggers[i] != 0) {
                     triggers[i] = m.getArgAsFloat(i);
-                    rectCount += 1;
+                    rectCount += 1; //add 1 or 0. only counts the 1's
                     makeRect(rectCount);
                 }
                 else {
