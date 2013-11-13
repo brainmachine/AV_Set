@@ -90,6 +90,11 @@ void testApp::parseOSCMessages() {
             
             //only update triggers if the message is new
             for (int i = 0; i < m.getNumArgs(); i++) {
+                
+                //populate triggers
+                for (int i = 0; i < m.getNumArgs(); i++) {
+                    triggers[i] = m.getArgAsFloat(i);
+                }
                 if (m.getArgAsFloat(i) != _triggers[i]) {
                     triggers[i] = m.getArgAsFloat(i);
                     rectCount += m.getArgAsFloat(i);
@@ -115,9 +120,9 @@ void testApp::makeRect(int rectIndex) {
     if (rectCount%numXRects==0) {
         ofLogNotice("should go to new line");
         rectYPos += rectSize%ofGetHeight();
-        ofLogNotice("rectYPos: "+ofToString(rectYPos));
+        ofLogNotice("rectCount: "+ofToString(rectCount));
     }
-    if (rectYPos > numRects) {
+    if (rectCount > numRects) {
         
     }
 }
