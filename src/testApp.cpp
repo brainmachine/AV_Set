@@ -65,8 +65,7 @@ void testApp::draw(){
     
     
     
-    ofSetColor(255*meters[0], 255*meters[0], 255*(1-meters[4]));
-    ofRect(rectXPos, rectYPos, rectSize, rectSize);
+    drawRect();
 }
 
 //--------------------------------------------------------------
@@ -95,11 +94,11 @@ void testApp::parseOSCMessages() {
             //only update triggers if the message is new
             for (int i = 0; i < m.getNumArgs(); i++) {
                 
-                
+                //do your triggering in here:
                 if (triggers[i] != _triggers[i] && triggers[i] != 0) {
                     triggers[i] = m.getArgAsFloat(i);
-                    rectCount += 1; //add 1 or 0. only counts the 1's
-                    makeRect(rectCount);
+                    rectCount += triggers[i]; //add 1 or 0. only counts the 1's
+                    updateRect(rectCount);
                 }
                 
             }
@@ -116,7 +115,7 @@ void testApp::parseOSCMessages() {
 }
 
 //--------------------------------------------------------------
-void testApp::makeRect(int rectIndex) {
+void testApp::updateRect(int rectIndex) {
     rectCount = rectIndex;
     rectXPos = (rectCount * rectSize)%ofGetWidth();
     if (rectCount%numXRects==0) {
@@ -127,6 +126,10 @@ void testApp::makeRect(int rectIndex) {
     if (rectCount > numRects) {
         
     }
+}
+void testApp::drawRect() {
+    ofSetColor(255*meters[0], 255*meters[0], 255*(1-meters[4]));
+    ofRect(rectXPos, rectYPos, rectSize, rectSize);
 }
 //--------------------------------------------------------------
 void testApp::drawHorizon() {
