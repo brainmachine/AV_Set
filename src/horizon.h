@@ -7,9 +7,9 @@
 //
 
 #include "ofMain.h"
-//#include "testApp.h"
+#include "testApp.h"
 
-class horizon : public testApp {
+class horizon : public ofBaseApp {
   
     void drawHorizon();
     
