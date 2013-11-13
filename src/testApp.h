@@ -32,6 +32,7 @@ class testApp : public ofBaseApp{
     float mainMix;
     float* meters;
     int* triggers;
+    int* _triggers;
     
     
     // RECT STUFF

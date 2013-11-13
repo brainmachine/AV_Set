@@ -13,6 +13,8 @@ void testApp::setup(){
     // OSC STUFF
     receiver.setup(PORT);
     meters = new float[7];
+    triggers = new int[7];
+    _triggers = new int[7];
     
     //RECT STUFF
     rectXPos = 0;
@@ -81,10 +83,11 @@ void testApp::parseOSCMessages() {
         else if(m.getAddress() == "/main/trigger")
         {
             for (int i = 0; i < m.getNumArgs(); i++) {
-               rectCount += m.getArgAsInt32(i);
-                makeRect(rectCount);
+               rectCount += m.getArgAsInt32(0);
+                
+                //makeRect(rectCount);
             }
-            
+            makeRect(rectCount);
            // for (int i = 0; i < 7; i++) {
             
             
