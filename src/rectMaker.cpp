@@ -23,8 +23,8 @@ void RectMaker::setupRect(int offset) {
     
 }
 //--------------------------------------------------------------
-void RectMaker::updateRect(int rectIndex) {
-    rectCount = rectIndex;
+void RectMaker::updateRect() {
+    rectCount++;
     rectXPos = (rectCount * rectSize)%ofGetWidth();
     if (rectCount%numXRects==0) {
         ofLogNotice("should go to new line");
