@@ -42,6 +42,7 @@ void testApp::setup(){
    // rectMakers[i].rectCount = 0;
        rectMakers[i].setupRect(i);
        rectMakers[i].rectYPos = i*30; //offset
+       rectMakers[i].rectXPos = 0;
    }
 }
 
@@ -122,11 +123,9 @@ void testApp::parseOSCMessages() {
                 if (triggers[i] != _triggers[i] && triggers[i] != 0) {
                     triggers[i] = m.getArgAsFloat(i);
                     
-                    //do what you want in here:
+                    //do what you want here:
                     rectMakers[i].rectCount += triggers[i];
                     rectMakers[i].updateRect();
-//                    rectCount += triggers[i]*numXRects*i; //add 1 or 0. only counts the 1's
-//                    updateRect(rectCount);
                 
             }
             
