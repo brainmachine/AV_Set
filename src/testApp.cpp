@@ -66,26 +66,26 @@ void testApp::update(){
 //        rectMakers[i].updateRect();
 //    }
     
+    horizonFBO.begin();
+    ofClear(255, 255, 255, 0);
+    // drawHorizon();
+    horizonFBO.end();
     
+    // Structured rectangles
+    
+    
+    rectFBO.begin();
+    for (int i = 0; i < 7; i++) {
+        rectMakers[i].drawRect(meters[0]*meters[3], meters[1], 1-meters[4]);
+    }
+    
+    rectFBO.end();
 }
 
 //--------------------------------------------------------------
 void testApp::draw(){
     
-    horizonFBO.begin();
-    ofClear(255, 255, 255, 0);
-    drawHorizon();
-    horizonFBO.end();
     
-    // Structured rectangles
-   
-    
-    rectFBO.begin();
-    for (int i = 0; i < 7; i++) {
-        rectMakers[i].drawRect(meters[0], meters[1], 1-meters[4]);
-    }
-    
-    rectFBO.end();
     
     rectFBO.draw(0,0);
     horizonFBO.draw(0,0);
@@ -109,6 +109,7 @@ void testApp::parseOSCMessages() {
         }
         else if(m.getAddress() == "/main/trigger")
         {
+            
             //populate triggers
             for (int i = 0; i < m.getNumArgs(); i++) {
                 triggers[i] = m.getArgAsFloat(i);
@@ -120,9 +121,9 @@ void testApp::parseOSCMessages() {
                 //do your triggering in here:
                 if (triggers[i] != _triggers[i] && triggers[i] != 0) {
                     triggers[i] = m.getArgAsFloat(i);
-                    ofLogNotice("triggers: "+ofToString(triggers[i]));
+                    
                     //do what you want in here:
-                   // rectMakers[i].rectCount += triggers[i];
+                    rectMakers[i].rectCount += triggers[i];
                     rectMakers[i].updateRect();
 //                    rectCount += triggers[i]*numXRects*i; //add 1 or 0. only counts the 1's
 //                    updateRect(rectCount);
