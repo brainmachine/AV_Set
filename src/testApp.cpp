@@ -75,6 +75,7 @@ void testApp::update(){
     
     
     rectFBO.begin();
+    ofClear(255,255,255,0);
     for (int i = 0; i < 7; i++) {
         rectMakers[i].drawRect(1-(meters[0]/2+meters[3]/2), 1-
                                (meters[1]/2+meters[2]/2), meters[4]/2+meters[5]/2);
