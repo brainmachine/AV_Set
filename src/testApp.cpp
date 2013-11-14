@@ -40,7 +40,8 @@ void testApp::setup(){
     
    for (int i = 0; i < 7; i++) {
    // rectMakers[i].rectCount = 0;
-       rectMakers[i].setupRect(i*30);
+       rectMakers[i].setupRect(i);
+       rectMakers[i].rectCount = i*rectMakers[i].numXRects;
    }
 }
 
