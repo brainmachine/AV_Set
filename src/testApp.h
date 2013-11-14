@@ -2,11 +2,13 @@
 
 #include "ofMain.h"
 #include "ofxOsc.h"
+#include "rectMaker.h"
+
 //#include "horizon.h" -->> do this later
 // listen on port 12345
 #define PORT 12345
 
-class testApp : public ofBaseApp{
+class testApp : public ofBaseApp  {
 
 	public:
 		void setup();
@@ -44,27 +46,9 @@ class testApp : public ofBaseApp{
     // FBOs
     ofFbo rectFBO;
     ofFbo horizonFBO;
-
+    rectMaker myRectMaker;
     
     
     
 };
 
-class rectMaker : testApp  {
-    void setupRect();
-    void updateRect(int rectIndex);
-    void drawRect();
-    
-public:
-    // RECT STUFF
-    int rectXPos;
-    int rectYPos;
-    int rectSize;
-    int rectSpacing;
-    
-    int numXRects;
-    int numYRects;
-    int numRects;
-    int rectCount;
-    bool doRectCount;
-};

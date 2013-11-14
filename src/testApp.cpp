@@ -66,10 +66,12 @@ void testApp::draw(){
     horizonFBO.end();
     
     // Structured rectangles
-    
+   
     
     rectFBO.begin();
-    
+//    rectMaker hisMaker;
+//    hisMaker.drawRect();
+//    ofLogNotice("!!!!!!!!!!!!!!PSODKFGPSODFKGPSDOFKGSPODFGK!!!!! --->"+ofToString(hisMaker.rectCount));
     rectFBO.end();
     
     rectFBO.draw(0,0);
@@ -124,37 +126,6 @@ void testApp::parseOSCMessages() {
 	}
 }
 
-void rectMaker::setupRect() {
-    //RECT STUFF
-    rectXPos = 0;
-    rectYPos = 0;
-    rectSize = 30;
-    rectSpacing = 0;
-    numXRects = ofGetWidth()/rectSize-rectSpacing;
-    numYRects = ofGetHeight()/rectSize-rectSpacing;
-    numRects = numYRects*numXRects;
-    rectCount = 0;
-    doRectCount = true;
-    ofLogNotice("\n numYRects: "+ofToString(numYRects)+"\n numXRects: "+ofToString(numXRects)+"\n numRects: "+ofToString(numRects));
-
-}
-//--------------------------------------------------------------
-void rectMaker::updateRect(int rectIndex) {
-    rectCount = rectIndex;
-    rectXPos = (rectCount * rectSize)%ofGetWidth();
-    if (rectCount%numXRects==0) {
-        ofLogNotice("should go to new line");
-        rectYPos += rectSize%ofGetHeight();
-        ofLogNotice("rectCount: "+ofToString(rectCount));
-    }
-    if (rectCount >= numRects) {
-        rectYPos = 0;
-    }
-}
-void rectMaker::drawRect() {
-    ofSetColor(255*meters[0], 255*meters[0], 255*(1-meters[4]));
-    ofRect(rectXPos, rectYPos, rectSize, rectSize);
-}
 //--------------------------------------------------------------
 void testApp::drawHorizon() {
     //Abstract line stuff
