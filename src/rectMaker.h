@@ -14,7 +14,7 @@ class RectMaker : public ofRectangle  {
 public:
     void setupRect(int offset);
     void updateRect();
-    void drawRect(float r, float g, float b);
+    void drawRect(float r, float g, float b, float a);
     
 public:
     // RECT STUFF
