@@ -36,6 +36,12 @@ void testApp::setup(){
     
     //Rectmake
     myRectMaker.setupRect();
+    rectMakers = new RectMaker[7];
+    
+   for (int i = 0; i < 7; i++) {
+   // rectMakers[i].rectCount = 0;
+       rectMakers[i].setupRect();
+   }
 }
 
 //--------------------------------------------------------------
@@ -54,8 +60,10 @@ void testApp::update(){
     }
     
     // STRUCTURED RECTANGLES
-   
     
+    for (int i = 0; i < 7; i++) {
+        rectMakers[i].updateRect(rectMakers[i].rectCount);
+    }
     
     
 }
@@ -72,7 +80,10 @@ void testApp::draw(){
    
     
     rectFBO.begin();
-    myRectMaker.drawRect(meters[0], meters[1], 1-meters[4]);
+    for (int i = 0; i < 7; i++) {
+        rectMakers[i].drawRect(meters[0], meters[1], 1-meters[4]);
+    }
+    
     rectFBO.end();
     
     rectFBO.draw(0,0);
@@ -110,8 +121,8 @@ void testApp::parseOSCMessages() {
                     triggers[i] = m.getArgAsFloat(i);
                     ofLogNotice("triggers: "+ofToString(triggers[i]));
                     //do what you want in here:
-                    myRectMaker.rectCount += triggers[4];
-                    myRectMaker.updateRect(myRectMaker.rectCount);
+                    rectMakers[i].rectCount += triggers[i];
+                    rectMakers[i].updateRect(myRectMaker.rectCount);
 //                    rectCount += triggers[i]*numXRects*i; //add 1 or 0. only counts the 1's
 //                    updateRect(rectCount);
                 

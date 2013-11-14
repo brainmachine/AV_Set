@@ -47,6 +47,7 @@ class testApp : public ofBaseApp  {
     ofFbo rectFBO;
     ofFbo horizonFBO;
     RectMaker myRectMaker;
+    RectMaker* rectMakers;
     
     
     

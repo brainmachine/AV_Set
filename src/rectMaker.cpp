@@ -8,9 +8,9 @@
 
 #include "rectMaker.h"
 
-void RectMaker::setupRect() {
+void RectMaker::setupRect(int offset) {
     //RECT STUFF
-    rectXPos = 0;
+    rectXPos = 0+offset;
     rectYPos = 0;
     rectSize = 30;
     rectSpacing = 0;
