@@ -35,13 +35,12 @@ void testApp::setup(){
     horizonFBO.end();
     
     //Rectmake
-    myRectMaker.setupRect(0);
     rectMakers = new RectMaker[7];
     
    for (int i = 0; i < 7; i++) {
    // rectMakers[i].rectCount = 0;
-       rectMakers[i].setupRect(i);
-       rectMakers[i].rectYPos = i*30; //offset
+       rectMakers[i].setupRect(0);
+       rectMakers[i].rectYPos = i*30*3; //offset
        rectMakers[i].rectXPos = 0;
    }
 }
@@ -68,8 +67,8 @@ void testApp::update(){
 //    }
     
     horizonFBO.begin();
-    ofClear(255, 255, 255, 0);
-    // drawHorizon();
+    ofClear(0, 0, 0, 0);
+     drawHorizon();
     horizonFBO.end();
     
     // Structured rectangles
@@ -77,7 +76,8 @@ void testApp::update(){
     
     rectFBO.begin();
     for (int i = 0; i < 7; i++) {
-        rectMakers[i].drawRect(meters[0]*meters[3], meters[1], 1-meters[4]);
+        rectMakers[i].drawRect(1-(meters[0]/2+meters[3]/2), 1-
+                               (meters[1]/2+meters[2]/2), meters[4]/2+meters[5]/2);
     }
     
     rectFBO.end();

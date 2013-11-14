@@ -10,8 +10,8 @@
 
 void RectMaker::setupRect(int offset) {
     //RECT STUFF
-    rectXPos = 0+offset;
-    rectYPos = 0;
+    rectXPos = 0;
+    rectYPos = 0+offset;
     rectSize = 30;
     rectSpacing = 0;
     numXRects = ofGetWidth()/rectSize-rectSpacing;
