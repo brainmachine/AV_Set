@@ -33,6 +33,9 @@ void testApp::setup(){
     horizonFBO.begin();
     ofClear(255,255,255, 0);
     horizonFBO.end();
+    
+    //Rectmake
+    myRectMaker.setupRect();
 }
 
 //--------------------------------------------------------------
@@ -51,7 +54,7 @@ void testApp::update(){
     }
     
     // STRUCTURED RECTANGLES
-    
+   
     
     
     
@@ -69,9 +72,7 @@ void testApp::draw(){
    
     
     rectFBO.begin();
-//    rectMaker hisMaker;
-//    hisMaker.drawRect();
-//    ofLogNotice("!!!!!!!!!!!!!!PSODKFGPSODFKGPSDOFKGSPODFGK!!!!! --->"+ofToString(hisMaker.rectCount));
+    myRectMaker.drawRect(meters[0], meters[1], 1-meters[4]);
     rectFBO.end();
     
     rectFBO.draw(0,0);
@@ -109,6 +110,8 @@ void testApp::parseOSCMessages() {
                     triggers[i] = m.getArgAsFloat(i);
                     ofLogNotice("triggers: "+ofToString(triggers[i]));
                     //do what you want in here:
+                    myRectMaker.rectCount += triggers[4];
+                    myRectMaker.updateRect(myRectMaker.rectCount);
 //                    rectCount += triggers[i]*numXRects*i; //add 1 or 0. only counts the 1's
 //                    updateRect(rectCount);
                 

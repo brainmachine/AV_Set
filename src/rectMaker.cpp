@@ -35,7 +35,7 @@ void RectMaker::updateRect(int rectIndex) {
         rectYPos = 0;
     }
 }
-void RectMaker::drawRect(int r, int g, int b) {
+void RectMaker::drawRect(float r, float g, float b) {
     ofSetColor(255*r, 255*g, 255*b);
     ofRect(rectXPos, rectYPos, rectSize, rectSize);
 }
